@@ -358,7 +358,6 @@ for key, url in Twitter_Activity.items():
 
 # Die nachfolgende Zeile hat keinen Einfluss auf den Code und dient lediglich dazu, die Fehlermeldungen zu nicht definierten namen zu unterdrücken
 b2b_tw_own_posts_primary, b2b_tw_own_posts_mixed, b2b_tw_likes_replies_primary, b2b_tw_likes_replies_mixed, b2b_tw_engagement_reach_primary, b2b_tw_engagement_reach_mixed = dfs
-
 b2b_tw_own_posts = pd.concat([b2b_tw_own_posts_primary,b2b_tw_own_posts_mixed], ignore_index=True)
 b2b_tw_likes_replies = pd.concat([b2b_tw_likes_replies_primary,b2b_tw_likes_replies_mixed], ignore_index=True)
 b2b_tw_engagement_reach = pd.concat([b2b_tw_engagement_reach_primary,b2b_tw_engagement_reach_mixed], ignore_index=True)
@@ -421,7 +420,12 @@ Sentiment = {
     "b2b_yt_telefonicade_x_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_9n5gkOQI.csv",
     "b2b_yt_telekombusiness_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_SBHYCIMw.csv",
     "b2b_yt_vodafonede_x_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_Ud1eD8zl.csv",
-    "b2b_yt_deutschetelekomag_x_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_sSgFxdV7.csv"
+    "b2b_yt_deutschetelekomag_x_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_sSgFxdV7.csv",
+    
+    "b2b_fb_o2cando_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_Yy48eFXT.csv",
+    "b2b_insta_o2cando_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_lzibfwCr.csv",
+    "b2b_tw_o2cando_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_nsISQUk5.csv",
+    "b2b_yt_o2cando_sentiment":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_8re8oMkO.csv"
     }
 
 dfs = []
@@ -448,10 +452,63 @@ for i,temp_df in enumerate(dfs):
     dfs[i].loc['Gesamt'] = [sums[col] for col in cols]
     dfs[i].insert(0, 'placeholder', None)
 
+(b2b_fb_o2business_sentiment, b2b_fb_telekomgk_sentiment, 
+    b2b_fb_vodafonebusiness_sentiment, b2b_fb_deutschetelekom_x_sentiment, 
+    b2b_fb_vodafonede_x_sentiment, b2b_insta_o2business_sentiment, 
+    b2b_insta_vodafonebusinessde_sentiment, b2b_insta_deutschetelekom_x_sentiment, 
+    b2b_insta_vodafone_x_sentiment, b2b_tw_o2business_sentiment, 
+    b2b_tw_telekomgk_sentiment, b2b_tw_vodafoneb2b_sentiment, 
+    b2b_tw_telefonicade_x_sentiment, b2b_tw_deutschetelekom_x_sentiment, 
+    b2b_tw_vodafonede_x_sentiment,  b2b_yt_telefonicade_x_sentiment, 
+    b2b_yt_telekombusiness_sentiment, b2b_yt_vodafonede_x_sentiment, 
+    b2b_yt_deutschetelekomag_x_sentiment,
+    b2b_fb_o2cando_sentiment, b2b_insta_o2cando_sentiment,
+    b2b_tw_o2cando_sentiment, b2b_yt_o2cando_sentiment) = dfs
     
-b2b_fb_o2business_sentiment, b2b_fb_telekomgk_sentiment, b2b_fb_vodafonebusiness_sentiment, b2b_fb_deutschetelekom_x_sentiment, b2b_fb_vodafonede_x_sentiment, b2b_insta_o2business_sentiment, b2b_insta_vodafonebusinessde_sentiment, b2b_insta_deutschetelekom_x_sentiment, b2b_insta_vodafone_x_sentiment, b2b_tw_o2business_sentiment, b2b_tw_telekomgk_sentiment, b2b_tw_vodafoneb2b_sentiment, b2b_tw_telefonicade_x_sentiment, b2b_tw_deutschetelekom_x_sentiment, b2b_tw_vodafonede_x_sentiment,  b2b_yt_telefonicade_x_sentiment, b2b_yt_telekombusiness_sentiment, b2b_yt_vodafonede_x_sentiment, b2b_yt_deutschetelekomag_x_sentiment = dfs
 
-# %% [4] Create Export Files
+# %% [4] Total Posts Mixed Channels
+Total_Posts = {
+    "b2b_fb_mixed_total_posts":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_u8WdoNPk.csv",
+    "b2b_insta_mixed_total_posts":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_G94BJWYT.csv",
+    "b2b_tw_mixed_total_posts":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_4yqiTRvJ.csv",
+    "b2b_yt_mixed_total_posts":"https://app.talkwalker.com/app/project/cfcc2e9b-1aa6-4571-b108-fba6a1d2e84a/cached/export_Telef%C3%B3nicaGermany_5RYSnquS.csv"
+    }
+
+dfs = []
+
+for key, url in Total_Posts.items():
+    dfs.append(pd.read_csv(url))
+    
+b2b_fb_mixed_total_posts, b2b_insta_mixed_total_posts, b2b_tw_mixed_total_posts, b2b_yt_mixed_total_posts = dfs
+
+# Definiere welche Spalten aus den jeweiligen Dataframes extrahiert werden sollen 
+col_df_map = {
+    "Facebook_Mixed_Total_Posts": b2b_fb_mixed_total_posts,
+    "Instagram_Mixed_Total_Posts": b2b_insta_mixed_total_posts,
+    "Twitter_Mixed_Total_Posts": b2b_tw_mixed_total_posts,
+    "YouTube_Mixed_Total_Posts": b2b_yt_mixed_total_posts
+    }
+
+for index,cols in index_column_map.items():
+    for col in cols:
+        if "Facebook" in col:
+            for key, value in col_df_map.items():
+                if key == "Facebook_Mixed_Total_Posts":
+                    df.loc[index, key] = value.query(f"Labels=='{col}'")["Owner Posts"].values[0] if len(value.query(f"Labels=='{col}'"))>0 else 0
+        if "Instagram" in col:
+            for key, value in col_df_map.items():
+                if key == "Instagram_Mixed_Total_Posts":
+                    df.loc[index, key] = value.query(f"Labels=='{col}'")["Total Posts"].values[0] if len(value.query(f"Labels=='{col}'"))>0 else 0        
+        if "Twitter" in col:
+            for key, value in col_df_map.items():
+                if key == "Twitter_Mixed_Total_Posts":
+                    df.loc[index, key] = value.query(f"Labels=='{col}'")["Owner Tweets"].values[0] if len(value.query(f"Labels=='{col}'"))>0 else 0
+        if "YouTube" in col:
+            for key, value in col_df_map.items():
+                if key == "YouTube_Mixed_Total_Posts":
+                    df.loc[index, key] = value.query(f"Labels=='{col}'")["Owner Posts"].values[0] if len(value.query(f"Labels=='{col}'"))>0 else 0
+
+# %% [5] Create Export Files
 date = datetime.datetime.strptime(lastMonth, "%Y-%m-%d")
 
 # load workbook
@@ -472,11 +529,13 @@ ws.range('G3').value = b2b_fb_telekomgk_sentiment
 ws.range('M3').value = b2b_fb_vodafonebusiness_sentiment
 ws.range('Y3').value = b2b_fb_deutschetelekom_x_sentiment
 ws.range('AE3').value = b2b_fb_vodafonede_x_sentiment
+ws.range('AK3').value = b2b_fb_o2cando_sentiment
 
 ws.range('A21').value = b2b_insta_o2business_sentiment
 ws.range('M21').value = b2b_insta_vodafonebusinessde_sentiment
 ws.range('Y21').value = b2b_insta_deutschetelekom_x_sentiment
 ws.range('AE21').value = b2b_insta_vodafone_x_sentiment
+ws.range('AK21').value = b2b_insta_o2cando_sentiment
 
 ws.range('A39').value = b2b_tw_o2business_sentiment
 ws.range('G39').value = b2b_tw_telekomgk_sentiment
@@ -484,9 +543,10 @@ ws.range('M39').value = b2b_tw_vodafoneb2b_sentiment
 ws.range('S39').value = b2b_tw_telefonicade_x_sentiment
 ws.range('Y39').value = b2b_tw_deutschetelekom_x_sentiment
 ws.range('AE39').value = b2b_tw_vodafonede_x_sentiment
+ws.range('AK39').value = b2b_tw_o2cando_sentiment
 
 ws.range('G57').value = b2b_yt_telekombusiness_sentiment
 ws.range('S57').value = b2b_yt_telefonicade_x_sentiment
 ws.range('Y57').value = b2b_yt_deutschetelekomag_x_sentiment
 ws.range('AE57').value = b2b_yt_vodafonede_x_sentiment
-
+ws.range('AK57').value = b2b_yt_o2cando_sentiment
